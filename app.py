@@ -115,7 +115,8 @@ with tab1:
     with a:
         fig = px.pie(f, names="Churn", hole=0.6, color="Churn",
                      color_discrete_map=CHURN_COLORS, title="Customers: Stayed vs Churned")
-        fig.update_traces(textinfo="percent+label")
+               fig.update_traces(textinfo="percent", textfont_size=16)
+        fig.update_layout(legend=dict(orientation="h", y=-0.1, x=0.5, xanchor="center"))
         st.plotly_chart(style(fig), use_container_width=True)
     with b:
         fig = px.bar(rate_by("Contract"), x="Contract", y="Churn %", text_auto=".1f",
