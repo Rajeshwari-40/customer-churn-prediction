@@ -109,13 +109,12 @@ tab1, tab2, tab3, tab4 = st.tabs(
 def rate_by(col):
     return f.groupby(col)["ChurnFlag"].mean().mul(100).reset_index(name="Churn %")
 
-
 with tab1:
     a, b = st.columns([1, 1.4])
     with a:
         fig = px.pie(f, names="Churn", hole=0.6, color="Churn",
                      color_discrete_map=CHURN_COLORS, title="Customers: Stayed vs Churned")
-               fig.update_traces(textinfo="percent", textfont_size=16)
+        fig.update_traces(textinfo="percent", textfont_size=16)
         fig.update_layout(legend=dict(orientation="h", y=-0.1, x=0.5, xanchor="center"))
         st.plotly_chart(style(fig), use_container_width=True)
     with b:
